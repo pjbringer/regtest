@@ -1,1 +1,2 @@
-experiment
+*.o
+test_experiment
