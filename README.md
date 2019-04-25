@@ -76,12 +76,13 @@ void test_periph_start() {
 ```C++
 void expect_read(const volatile uint32_t*, uint32_t);
 void expect_write(const volatile uint32_t*, uint32_t);
-void expect_rest();
+int expect_rest();
 ```
 
     Both expect_read and expect_write add one expected memory operation to the
 queue "ropq". The "expect_rest()" function fails by raising a signal if there
-remains an expected operation in the queue.
+remains an expected operation in the queue; it's return code is 0 if and only
+is succeeds.
 
 
 ## The "Reg32" Type
