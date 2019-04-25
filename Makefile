@@ -1,14 +1,15 @@
-CXXFLAGS=-Wall -Wextra -pedantic -Og -g3 -Wunused -std=c++11
-CFLAGS=-c -Wall -Wextra -pedantic -Og -g3 -Wunused -std=c11
+CXXFLAGS=-Wall -Wextra -pedantic -Og -g -Wunused -std=c++11 -I.
+CFLAGS=-c -Wall -Wextra -pedantic -Og -g -Wunused -std=c11
 
-all: experiment.o test_experiment
-test: test_experiment
-	./test_experiment
+all: examples/test_example examples/example.o
+
+test: examples/test_example
+	./examples/test_example
 
 clean:
-	$(RM) experiment experiment.o test_experiment
+	$(RM) examples/example.o examples/test_example
 
-experiment.o: experiment.c regtest.h
-test_experiment: experiment.c regtest.h
+examples/example.o: examples/example.c regtest.h
+examples/test_example: examples/example.c regtest.h
 	$(CXX) $(CXXFLAGS) -DTEST -o $@ $<
 
